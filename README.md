@@ -6,9 +6,10 @@
 
 | 项目 | 使用工具 | 分析主题 | 项目材料 |
 |---|---|---|---|
-| 在线零售销售表现与客户价值分析 | Excel、数据透视表、RFM | 销售趋势、国家贡献、热销商品、客户复购、RFM 客户分层 | `online-retail-analysis` |
-| 淘宝用户行为分析 | SQLite、SQL、Excel | 用户行为占比、PV/UV 趋势、转化漏斗、复购分析、商品/类目偏好 | `taobao-user-behavior-analysis` |
-| 巴西电商订单经营分析 | SQLite、SQL、Excel | 月度 GMV、区域销售、类目排名、RFM 客户分层、物流体验、卖家集中度 | [olist-ecommerce-sql-analysis](./olist-ecommerce-sql-analysis/) |
+| 在线零售销售表现与客户价值分析 | Excel、数据透视表、RFM | 销售趋势、国家贡献、热销商品、客户复购、RFM 客户分层 | [online-retail-analysis](./online-retail-analysis/) |
+| 淘宝用户行为分析 | SQLite、SQL、Excel | 用户行为占比、PV/UV 趋势、转化漏斗、复购分析、商品/类目偏好 | [taobao-user-behavior-analysis](./taobao-user-behavior-analysis/) |
+| 巴西电商订单经营分析 | SQLite、MySQL、SQL、Python、Excel、Power BI | 月度 GMV、区域销售、品类排名、RFM 客户分层、物流体验、卖家集中度 | [olist-ecommerce-sql-analysis](./olist-ecommerce-sql-analysis/) |
+| Cookie Cats A/B 测试分析 | Python、pandas、scipy、statsmodels、matplotlib | SRM 检查、留存率检验、置信区间、护栏指标、参与度分析与实验决策 | [cookie-cats-ab-testing](./cookie-cats-ab-testing/) |
 
 ## 项目一：在线零售销售表现与客户价值分析
 
@@ -91,6 +92,23 @@
 - [正式报告](./olist-ecommerce-sql-analysis/巴西电商订单经营分析报告_正式版.docx)
 - [Excel分析文件](./olist-ecommerce-sql-analysis/巴西电商订单经营分析.xlsx)
 - [SQL代码与问题复盘](./olist-ecommerce-sql-analysis/巴西电商订单经营分析_SQL代码注释与问题复盘.md)
+
+## 项目四：Cookie Cats A/B 测试分析
+
+本项目基于 Cookie Cats 移动游戏约 9 万名用户的实验数据，评估首次关卡门槛从第 30 关后移至第 40 关是否能够提升用户留存和参与度。
+
+### 核心分析内容
+
+- 完成数据规模、重复用户、字段完整性检查
+- 使用卡方检验进行 SRM（样本比例失衡）检查
+- 对比对照组与实验组的次日留存率、7 日留存率和平均游戏轮次
+- 使用两样本比例 Z 检验和 95% 置信区间评估 7 日留存差异
+- 使用 Mann-Whitney U 检验评估游戏轮次分布差异
+- 基于统计结果提出实验上线建议
+
+### 项目结论
+
+实验组 7 日留存率为 18.20%，低于对照组的 19.02%，下降 0.82 个百分点，且差异显著（p=0.0016）。因此不建议直接上线 gate_40 方案；同时发现 SRM 风险，建议排查分流与埋点问题后重新实验。
 ## 数据分析项目流程 Skill
 
 [data-analysis-project-workflow](./data-analysis-project-workflow/) 是一个面向数据分析学习项目的通用流程 Skill，覆盖从公开数据选择、数据质量检查、SQL 分析、Excel 可视化到业务报告撰写的完整步骤。
